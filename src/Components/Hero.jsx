@@ -6,10 +6,10 @@ const Hero = () => {
     const {loading, error, isError, trendingMovies} = useTrendingMovies()
     let content;
     if (!trendingMovies || loading) content = <PulseLoader />
+    if(isError) toast.error(error)
     if(trendingMovies) {
         let index = Math.floor(Math.random() * 20)
         const movie = trendingMovies[index]
-        console.log(movie)
         content = (
             <section className='h-full w-full relative'>
                 <div className='bg-black absolute w-full h-full opacity-70'></div>

@@ -11,7 +11,7 @@ const options = {
 // Fetch All movies
 export const getAllMovies = async () => {
 	const response = await fetch(
-		`${url}/top_rated?language=en-US&page=1`,
+		`${url}top_rated?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();
@@ -20,7 +20,7 @@ export const getAllMovies = async () => {
 
 // Fetch popular movies
 export const getTopMovies = async () => {
-	const response = await fetch(`${url}/popular?language=en-US&page=1`, options);
+	const response = await fetch(`${url}popular?language=en-US&page=1`, options);
 	const data = await response.json();
 	return data.results;
 };
@@ -28,7 +28,7 @@ export const getTopMovies = async () => {
 // Fetch trending movies
 export const getTrendingMovies = async () => {
 	const response = await fetch(
-		`${url}/now_playing?language=en-US&page=1`,
+		`${url}now_playing?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();
