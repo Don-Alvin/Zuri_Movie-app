@@ -1,15 +1,24 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import { MdFavorite } from 'react-icons/md'
+import { useState } from 'react'
 
-const Card = ({title, date, image, rating, id, key}) => {
+const Card = ({title, date, image, rating, id}) => {
+  const [isFavourite, setIsFavorite] = useState(false)
+
+  const makeFavourite = (movie_id) => {
+    setIsFavorite(!isFavourite)
+  }
   return (
     <div
       data-testid="movie-card" 
-      className='relative grid border w-[240px] rounded'
-      key={key}
+      className='relative grid border w-[240px] lg:h-[460px] rounded'
     >
+      <MdFavorite 
+        className={`absolute text-2xl ${isFavourite ? `text-[#be123c]` : `text-gray-200`} right-2 top-2 cursor-pointer`}
+        onClick={() => {makeFavourite(id)}}
+      />
       <img
-        className='w-full h-fit object-cover rounded-t'
+        className='w-full object-cover rounded-t'
         src={image} 
         alt={title}
         data-testid="movie-poster"
@@ -23,7 +32,7 @@ const Card = ({title, date, image, rating, id, key}) => {
             src='/images/imdb.png'
             alt='imdb logo'
           />
-          <span className='text-lg text-[#111827]'>{rating}/10</span>
+          <span className='text-lg text-[#111827]'>{rating.toFixed(1)}/10</span>
         </div>
       </div>
     </div>

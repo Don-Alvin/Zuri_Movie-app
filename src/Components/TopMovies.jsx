@@ -15,14 +15,15 @@ const TopMovies = () => {
         content = (
         <article className='grid grid-cols-5 gap-4 my-4'>
             {topMovies.slice(0, 10)?.map(movie => (
-                <Card
-                    image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                    title={movie.title}
-                    date={movie.release_date}
-                    rating={movie.vote_average}
-                    id={movie.id}
-                    key={movie.id}
-                />
+                <div key={movie.id}>
+                    <Card
+                        image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                        title={movie.title}
+                        date={movie.release_date}
+                        rating={movie.vote_average}
+                        id={movie.id}
+                    />
+                </div>
             ))}
         </article>
         )

@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { getMovie } from '../api/apiMovies'
+import { useGetMovie } from '../hooks/useMovies'
 
 const MovieDetails = () => {
   const { movieId } = useParams()
-  const [movie, setMovie] = useState(null)
+  const { movie } = useGetMovie(movieId)
 
-  useEffect(() => {
-    const fetchMovie = async() => {
-      const movie = await getMovie(movieId)
-      setMovie(movie)
-    }
-    fetchMovie()
-  },[movie])
-
-  console.log(movie);
-
-  const convertDate = (dateStr) => {
-    const date = new Date(dateStr)
-    const utcDate = new Date(date.toUTCString())
-    return utcDate
-  }
 
   let content;
   if(!movie) content=<p>Resource not found</p>

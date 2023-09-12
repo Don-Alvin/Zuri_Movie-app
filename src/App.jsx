@@ -3,6 +3,7 @@ import Home from "./Pages/Home"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ToastContainer } from "react-toastify"
 import Dashboard from "./Pages/Dashboard"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 const App = () => {
 
@@ -20,7 +21,8 @@ const App = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+          <RouterProvider router={router} />
         <ToastContainer
           position="top-right"
           autoClose={5000}

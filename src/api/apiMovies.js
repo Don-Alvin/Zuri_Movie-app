@@ -32,3 +32,14 @@ export const getMovie = async (movieId) => {
 	const data = await response.json();
 	return data;
 };
+
+// Search a movie
+
+export const searchMovie = async (searchWord) => {
+	const response = await fetch(
+		`https://api.themoviedb.org/3/search/movie?query=${searchWord}`,
+		options
+	);
+	const data = await response.json();
+	return data.results;
+};

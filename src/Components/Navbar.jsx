@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false)
+
+  const navigate = useNavigate()
 
   const activeNavbar = () => {
     if(window.scrollY >= 80){
@@ -12,7 +15,6 @@ const Navbar = () => {
     }else setIsActive(false)
   }
   window.addEventListener("scroll", activeNavbar)
-
 
   return (
     <nav className={`h-80px fixed z-50 flex items-center justify-between px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
@@ -24,7 +26,7 @@ const Navbar = () => {
           <input 
             type="text" 
             className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white' 
-            placeholder='What do you want to watch?' 
+            placeholder='What do you want to watch?'
           />
           <button 
             type='submit'
