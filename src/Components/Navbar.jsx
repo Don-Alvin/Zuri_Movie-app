@@ -15,7 +15,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`h-80px fixed z-50 flex items-center justify-between px-14 py-3 w-full ${isActive ? `bg-[#be123c]`: `bg-transparent`}`}>
+    <nav className={`h-80px fixed z-50 flex items-center justify-between px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
         <div className='flex items-center gap-[24px]'>
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className='flex items-center gap-2'>
           <span className='text-white font-semibold'>Sign in</span>
           <HiMenuAlt4
-            className={`${isActive ? `bg-white` : `bg-[#BE123C]`} rounded-full w-8 h-8 shadow ${isActive ? `text-[#be123c]`: `text-white`}`}
+            className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white`}
           />
         </div>
       </nav>

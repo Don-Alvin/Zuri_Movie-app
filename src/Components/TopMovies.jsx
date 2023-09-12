@@ -16,7 +16,7 @@ const TopMovies = () => {
         <article className='grid grid-cols-5 gap-4 my-4'>
             {topMovies.slice(0, 10)?.map(movie => (
                 <Card
-                    image={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                    image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                     title={movie.title}
                     date={movie.release_date}
                     rating={movie.vote_average}

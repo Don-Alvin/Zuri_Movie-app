@@ -1,19 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAMovie, getAllMovies, getTopMovies, getTrendingMovies } from "../api/apiMovies";
+import { getTopMovies, getTrendingMovies } from "../api/apiMovies";
 
-export const useMovies = () => {
-	const {
-		isInitialLoading: loading,
-		error,
-		isError,
-		data: allMovies,
-	} = useQuery({
-		queryKey: ["allMovies"],
-		queryFn: getAllMovies,
-	});
-
-	return { loading, error, isError, allMovies };
-};
 
 export const useTrendingMovies = () => {
     const {isInitialLoading: loading, error, isError, data: trendingMovies} = useQuery({queryKey: ["trendingMovies"], queryFn: getTrendingMovies})
@@ -34,12 +21,5 @@ export const useTopMovies = () => {
 	return { loading, error, isError, topMovies };
 }
 
-export const useAMovie = (movieId) => {
-	const {isInitialLoading: loading, error, isError, data: movie} = useQuery({
-		queryKey: ["movie"],
-		queryFn: getAMovie
-	})
 
-	return {loading, error, isError, movie}
-}
 

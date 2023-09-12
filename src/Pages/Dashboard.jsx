@@ -4,7 +4,7 @@ import MovieDetails from '../Components/MovieDetails'
 
 const Dashboard = () => {
   return (
-    <main>
+    <main className='flex'>
         <Sidebar />
         <MovieDetails />
     </main>

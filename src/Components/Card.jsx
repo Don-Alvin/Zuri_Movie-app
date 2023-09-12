@@ -9,7 +9,7 @@ const Card = ({title, date, image, rating, id, key}) => {
       key={key}
     >
       <img
-        className='w-full h-60 object-cover rounded-t'
+        className='w-full h-fit object-cover rounded-t'
         src={image} 
         alt={title}
         data-testid="movie-poster"
