@@ -20,6 +20,8 @@ const TopMovies = () => {
                     title={movie.title}
                     date={movie.release_date}
                     rating={movie.vote_average}
+                    id={movie.id}
+                    key={movie.id}
                 />
             ))}
         </article>

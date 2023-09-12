@@ -23,7 +23,7 @@ const Navbar = () => {
         <form className='border border-white rounded'>
           <input 
             type="text" 
-            className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white placeholder:font-semibold' 
+            className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white' 
             placeholder='What do you want to watch?' 
           />
           <button 

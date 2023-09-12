@@ -2,6 +2,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Home from "./Pages/Home"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ToastContainer } from "react-toastify"
+import Dashboard from "./Pages/Dashboard"
 
 const App = () => {
 
@@ -9,6 +10,7 @@ const App = () => {
     createRoutesFromElements(
       <Route>
         <Route path="/" element={<Home />} />
+        <Route path='/:movieId' element={<Dashboard />} />
       </Route>
     )
   )

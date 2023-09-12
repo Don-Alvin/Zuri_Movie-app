@@ -34,3 +34,10 @@ export const getTrendingMovies = async () => {
 	const data = await response.json();
 	return data.results;
 };
+
+// Fetch a movie
+export const getAMovie = async (movieId) => {
+	const response = await fetch(`${url}${movieId}`, options);
+	const data = await response.json();
+	return data.result;
+};
