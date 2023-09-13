@@ -4,14 +4,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ToastContainer } from "react-toastify"
 import Dashboard from "./Pages/Dashboard"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { SearchContextProvider } from "./Context/SearchContext"
 
 const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        <Route path="/" element={<Home />} />
-        <Route path='/:movieId' element={<Dashboard />} />
+          <Route path="/" element={<Home />} />
+          <Route path='/:movieId' element={<Dashboard />} />
       </Route>
     )
   )
@@ -22,7 +23,9 @@ const App = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
-          <RouterProvider router={router} />
+          <SearchContextProvider>
+            <RouterProvider router={router} />
+          </SearchContextProvider>
         <ToastContainer
           position="top-right"
           autoClose={5000}

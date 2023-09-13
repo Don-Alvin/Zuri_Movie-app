@@ -2,36 +2,45 @@ import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useGetMovie } from '../hooks/useMovies'
 import Navbar from './Navbar'
+import { PulseLoader } from 'react-spinners'
+import { toast } from 'react-toastify'
 
 const MovieDetails = () => {
   const { movieId } = useParams()
-  const { movie } = useGetMovie(movieId)
+  const { movie, loading, isError, error } = useGetMovie(movieId)
 
-  const hours = Math.floor(movie.runtime / 60);
-  const minutes = movie.runtime % 60;
-  const formattedRuntime = `${hours}h ${minutes}m`;
-
-  const releaseDate = new Date(movie.release_date);
-  const day = releaseDate.getUTCDate();
-  const month = releaseDate.toLocaleString('default', { month: 'long' });
-  const year = releaseDate.getUTCFullYear();
-
-  const formattedReleaseDate = `${month} ${day}, ${year}`;
+  console.log(movie);
 
   let content;
+
   if(!movie) content=<p>Resource not found</p>
+
+  if(loading) content = <PulseLoader />
+
+  if(isError) content = <p>{`Ooops! seems like we encountered an error: ${error}`}</p>
+
   if(movie){
+    const hours = Math.floor(movie.runtime / 60);
+    const minutes = movie.runtime % 60;
+    const formattedRuntime = `${hours}h ${minutes}m`;
+
+    const releaseDate = new Date(movie.release_date);
+    const day = releaseDate.getUTCDate();
+    const month = releaseDate.toLocaleString('default', { month: 'long' });
+    const year = releaseDate.getUTCFullYear();
+    const formattedReleaseDate = `${month} ${day}, ${year}`;
+
     content = (
-      <section>
+      <section key={movie.id}>
         <div className="lg:hidden">
           <Navbar />
         </div>
         <section className='w-full lg:py-10 lg:px-8' key={movie.id}>
-          <div className='relative'>
-          <div className='bg-black absolute w-full h-full opacity-70' key={movie.id}></div>
+          <div className='relative rounded-lg'>
+          <div className='bg-black absolute w-full h-full lg:hidden opacity-70' key={movie.id}></div>
             <img
               className='lg:rounded-lg h-[400px] w-full object-cover'
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
               alt={movie.title}
             />
           </div>

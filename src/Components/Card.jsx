@@ -8,6 +8,12 @@ const Card = ({title, date, image, rating, id}) => {
   const makeFavourite = (movie_id) => {
     setIsFavorite(!isFavourite)
   }
+
+  const releaseDate = new Date(date);
+  const day = releaseDate.getUTCDate();
+  const month = releaseDate.toLocaleString('default', { month: 'long' });
+  const year = releaseDate.getUTCFullYear();
+  const formattedReleaseDate = `${month} ${day}, ${year}`;
   return (
     <div
       data-testid="movie-card" 
@@ -24,7 +30,7 @@ const Card = ({title, date, image, rating, id}) => {
         data-testid="movie-poster"
       />
       <div className="flex flex-col items-center">
-        <span className='text-gray-500 text-sm'>{date}</span>
+        <span className='text-gray-500 text-sm'data-testid="release-date">{formattedReleaseDate}</span>
         <Link to={`${id}`} className='underline font-semibold text-center text-[#111827]' data-testid="movie-title">{title}</Link>
         <div className='flex gap-2'>
           <img

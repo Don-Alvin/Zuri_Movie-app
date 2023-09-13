@@ -2,12 +2,18 @@ import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
+import useSearch from '../hooks/useSearch'
 
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false)
 
-  const navigate = useNavigate()
+  const { searchWord, setSearchWord } = useSearch()
+
+  const handleSearchInputChange = (e) => {
+    const inputText = e.target.value;
+    setSearchWord(inputText)
+  };
 
   const activeNavbar = () => {
     if(window.scrollY >= 80){
@@ -22,19 +28,21 @@ const Navbar = () => {
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
         </div>
-        <form className='hidden  lg:block lg:border border-white rounded'>
+        <div className='hidden  lg:block lg:border border-white rounded'>
           <input 
-            type="text" 
+            type="search" 
             className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white' 
             placeholder='What do you want to watch?'
+            value={searchWord}
+            onChange={handleSearchInputChange}
           />
           <button 
-            type='submit'
+            type='button'
             className='w-6 p-1 mx-auto'
           >
             <AiOutlineSearch className='text-white flex items-center justify-center'/>
           </button>
-        </form>
+        </div>
         <div className='flex items-center gap-2'>
           <span className='text-white font-semibold'>Sign in</span>
           <HiMenuAlt4
