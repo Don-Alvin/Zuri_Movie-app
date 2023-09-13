@@ -6,7 +6,7 @@ import { GrLogout } from 'react-icons/gr'
 
 const Sidebar = () => {
   return (
-    <section className='w-[20%] border-r-2 border-t-2 rounded-tr-[50px] rounded-br-[50px] border-gray-400 h-full '>
+    <section className='hidden lg:block w-[20%] border-r-2 border-t-2 rounded-tr-[50px] rounded-br-[50px] border-gray-400 h-full '>
         <div className='flex items-center gap-2 mb-12 mt-10 px-8'>
           <img src='/images/logo.png' alt='logo' />
           <h2 className='font-bold text-2xl text-[#111827]'>MovieBox</h2>

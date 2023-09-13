@@ -17,12 +17,12 @@ const Navbar = () => {
   window.addEventListener("scroll", activeNavbar)
 
   return (
-    <nav className={`h-80px fixed z-50 flex items-center justify-between px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
-        <div className='flex items-center gap-[24px]'>
+    <nav className={`h-80px fixed z-50 flex items-center justify-between px-6 lg:px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
+        <div className='flex items-center  gap-2 lg:gap-[24px]'>
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
         </div>
-        <form className='border border-white rounded'>
+        <form className='hidden  lg:block lg:border border-white rounded'>
           <input 
             type="text" 
             className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white' 

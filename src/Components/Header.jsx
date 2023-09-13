@@ -6,7 +6,7 @@ import Navbar from './Navbar'
 const Header = () => {
   
   return (
-    <header className='lg:h-[100vh]'>
+    <header className='h-[80vh] md:h-[60vh] lg:h-[80vh]'>
         <Navbar />
         <Hero />
     </header>

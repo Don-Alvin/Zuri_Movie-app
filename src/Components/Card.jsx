@@ -11,7 +11,7 @@ const Card = ({title, date, image, rating, id}) => {
   return (
     <div
       data-testid="movie-card" 
-      className='relative grid border w-[240px] lg:h-[460px] rounded'
+      className='relative grid border w-[90%] md:w-[240px] lg:h-[460px] rounded'
     >
       <MdFavorite 
         className={`absolute text-2xl ${isFavourite ? `text-[#be123c]` : `text-gray-200`} right-2 top-2 cursor-pointer`}

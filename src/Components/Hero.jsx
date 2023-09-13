@@ -25,7 +25,7 @@ const Hero = () => {
                         {movie.vote_average}
                     </span>
                     <p className='text-white text-lg lg:w-[600px]'>{movie.overview}</p>
-                    <button className='flex items-center justify-center p-1 gap-2 bg-[#BE123C] text-white lg:w-[150px] rounded'>
+                    <button className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px] rounded'>
                         <BsPlayCircle />
                         Watch trailer
                     </button>
