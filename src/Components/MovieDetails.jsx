@@ -1,9 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useGetMovie } from '../hooks/useMovies'
-import Navbar from './Navbar'
 import { PulseLoader } from 'react-spinners'
-import { toast } from 'react-toastify'
 
 const MovieDetails = () => {
   const { movieId } = useParams()
