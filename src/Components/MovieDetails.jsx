@@ -20,9 +20,6 @@ const MovieDetails = () => {
   if(isError) content = <p>{`Ooops! seems like we encountered an error: ${error}`}</p>
 
   if(movie){
-    const hours = Math.floor(movie.runtime / 60);
-    const minutes = movie.runtime % 60;
-    const formattedRuntime = `${hours}h ${minutes}m`;
 
     const releaseDate = new Date(movie.release_date);
     const day = releaseDate.getUTCDate();
@@ -53,7 +50,7 @@ const MovieDetails = () => {
                   <img className='object-contain' src='/images/imdb.png' alt='imdb' />
                   {movie.vote_average.toFixed(1)}
                 </li>
-                <li className='text-sm' data-testid="movie-runtime">{formattedRuntime}</li>
+                <li className='text-sm' data-testid="movie-runtime">{movie.runtime}m</li>
                 <li className='flex gap-2'>
                   {movie.genres.map(genre => (
                     <span className='text-[#be123c] text-sm border border-[#be123c] p-[2px] rounded-lg'>{genre.name}</span>
