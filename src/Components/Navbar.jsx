@@ -24,14 +24,14 @@ const Navbar = () => {
 
   return (
     <nav className={`h-80px fixed z-50 flex items-center justify-between px-6 lg:px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
-        <div className='flex items-center  gap-2 lg:gap-[24px]'>
+        <div className='hidden lg:flex items-center  gap-2 lg:gap-[24px]'>
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
         </div>
-        <div className='hidden  lg:block lg:border border-white rounded'>
+        <div className='flex w-[85%] lg:w-[40%] justify-between border border-white rounded'>
           <input 
             type="search" 
-            className='outline-none p-1 w-[400px] bg-transparent text-white placeholder:text-white' 
+            className='outline-none p-1 w-[90%] bg-transparent text-white placeholder:text-white' 
             placeholder='What do you want to watch?'
             value={searchWord}
             onChange={handleSearchInputChange}
@@ -44,7 +44,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className='flex items-center gap-2'>
-          <span className='text-white font-semibold'>Sign in</span>
+          <span className='hidden lg:block text-white font-semibold'>Sign in</span>
           <HiMenuAlt4
             className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white`}
           />

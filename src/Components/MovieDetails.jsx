@@ -9,8 +9,6 @@ const MovieDetails = () => {
   const { movieId } = useParams()
   const { movie, loading, isError, error } = useGetMovie(movieId)
 
-  console.log(movie);
-
   let content;
 
   if(!movie) content=<p>Resource not found</p>
@@ -29,12 +27,8 @@ const MovieDetails = () => {
 
     content = (
       <section key={movie.id}>
-        <div className="lg:hidden">
-          <Navbar />
-        </div>
         <section className='w-full lg:py-10 lg:px-8' key={movie.id}>
-          <div className='relative rounded-lg'>
-          <div className='bg-black absolute w-full h-full lg:hidden opacity-70' key={movie.id}></div>
+          <div className='relative rounded-lg' key={movie.id}>
             <img
               className='lg:rounded-lg h-[400px] w-full object-cover'
               src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
