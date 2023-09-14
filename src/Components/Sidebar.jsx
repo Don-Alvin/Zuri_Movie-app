@@ -3,6 +3,7 @@ import { BsCameraVideo } from 'react-icons/bs'
 import { MdOndemandVideo } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 import { GrLogout } from 'react-icons/gr'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -12,10 +13,10 @@ const Sidebar = () => {
           <h2 className='font-bold text-2xl text-[#111827]'>MovieBox</h2>
         </div>
         <div>
-          <div className='flex items-center gap-2 text-2xl font-semibold text-gray-500 px-8 py-6 hover:bg-[#fde6ec] cursor-pointer'>
+          <Link to='/' className='flex items-center gap-2 text-2xl font-semibold text-gray-500 px-8 py-6 hover:bg-[#fde6ec] cursor-pointer'>
             <AiOutlineHome />
             <span className="hover:text-[#be123c]">Home</span>
-          </div>
+          </Link>
           <div className='flex items-center gap-2 text-2xl font-semibold text-gray-500 px-8 py-6 hover:bg-[#fde6ec] cursor-pointer'>
             <BsCameraVideo />
             <span className="hover:text-[#be123c]">Movies</span>

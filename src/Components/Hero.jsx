@@ -2,6 +2,7 @@ import { useTrendingMovies } from '../hooks/useMovies'
 import {PulseLoader} from 'react-spinners'
 import { BsPlayCircle } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     const {loading, error, isError, trendingMovies} = useTrendingMovies()
@@ -35,10 +36,10 @@ const Hero = () => {
                         {movie.vote_average}
                     </span>
                     <p className='text-white lg:text-lg lg:w-[600px]'>{movie.overview}</p>
-                    <button className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px] rounded'>
+                    <Link to={`${movie.id}`} className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px] rounded'>
                         <BsPlayCircle />
                         Watch trailer
-                    </button>
+                    </Link>
                 </div>
             </section>
         )
