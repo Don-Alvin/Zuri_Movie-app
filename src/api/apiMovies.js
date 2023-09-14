@@ -28,7 +28,10 @@ export const getTrendingMovies = async () => {
 
 // get a movie
 export const getMovie = async (movieId) => {
-	const response = await fetch(`${url}${movieId}?language=en-US`, options);
+	const response = await fetch(
+		`${url}${movieId}?append_to_response=videos&&language=en-US`,
+		options
+	);
 	const data = await response.json();
 	return data;
 };

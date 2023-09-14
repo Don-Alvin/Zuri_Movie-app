@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useGetMovie } from '../hooks/useMovies'
 import { PulseLoader } from 'react-spinners'
+import ReactPlayer from 'react-player'
 
 const MovieDetails = () => {
   const { movieId } = useParams()
@@ -23,15 +24,15 @@ const MovieDetails = () => {
     const year = releaseDate.getUTCFullYear();
     const formattedReleaseDate = `${month} ${day}, ${year}`;
 
+    const videos = movie.videos.results
+    const trailer = videos.filter(video => video.type === "Trailer")
+    
+
     content = (
       <section key={movie.id}>
         <section className='w-full lg:py-10 lg:px-8' key={movie.id}>
           <div className='relative rounded-lg' key={movie.id}>
-            <img
-              className='lg:rounded-lg h-[400px] w-full object-cover'
-              src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-              alt={movie.title}
-            />
+          <ReactPlayer width="100%" url={`https://www.youtube.com/watch?v=${trailer[0].key}`} />
           </div>
           <article className='grid lg:flex gap-4 px-8'>
             <div className='w-full lg:w-[60%] my-4 pr-6'>
