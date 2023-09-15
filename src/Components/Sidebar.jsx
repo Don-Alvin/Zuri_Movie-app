@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
-    <section className='hidden lg:block w-[20%] border-r-2 border-y-2 rounded-tr-[50px] rounded-br-[50px] border-gray-400 h-fill '>
+    <section className='hidden lg:block w-[20%] border-r-2 border-y-2 sticky inset-0 rounded-tr-[50px] rounded-br-[50px] border-gray-400 h-screen '>
         <div className='flex items-center gap-2 mb-4 mt-10 px-8'>
           <img  className='w-8' src='/images/logo.png' alt='logo' />
           <h2 className='font-semibold text-xl text-[#111827]'>MovieBox</h2>
