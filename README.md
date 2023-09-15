@@ -26,7 +26,7 @@
   `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`
 
 - To get a movie with id
-  `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`
+  `https://api.themoviedb.org/3/movie/${movieId}?append_to_response=videos,credits&&language=en-US`
 
 - To search for movies
   `https://api.themoviedb.org/3/search/movie?query=${searchWord}`
