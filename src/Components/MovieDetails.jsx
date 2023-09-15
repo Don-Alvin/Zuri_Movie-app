@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { useGetMovie } from '../hooks/useMovies'
 import { PulseLoader } from 'react-spinners'
-import ReactPlayer from 'react-player'
 import Footer from './Footer'
 
 const MovieDetails = () => {
