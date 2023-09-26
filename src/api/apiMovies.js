@@ -1,9 +1,10 @@
-const url = "https://api.themoviedb.org/3/movie/";
+const movieUrl = "https://api.themoviedb.org/3/movie";
+const tvURL = "https://api.themoviedb.org/3/tv";
 const key = import.meta.env.VITE_API_KEY;
 const options = {
 	method: "GET",
 	headers: {
-		accept: "applicatio/json",
+		accept: "application/json",
 		Authorization:
 			"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2MwMTc2YWZmMjFhYmM2MDBmMDdmNzEwMmZkNzUzNCIsInN1YiI6IjYzMzQyMjRkNjA4MmViMDA4ODNlOThiZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QWf5cOZsbD6iyt12-tlALXGxEeYm4F1LVqf2UEVkahg",
 	},
@@ -12,7 +13,7 @@ const options = {
 // Fetch popular movies
 export const getTopMovies = async () => {
 	const response = await fetch(
-		`${url}top_rated?language=en-US&page=1`,
+		`${movieUrl}/popular?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();
@@ -22,7 +23,7 @@ export const getTopMovies = async () => {
 // Fetch trending movies
 export const getTrendingMovies = async () => {
 	const response = await fetch(
-		`${url}top_rated?language=en-US&page=1`,
+		`${movieUrl}/popular?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();
@@ -32,7 +33,7 @@ export const getTrendingMovies = async () => {
 // get a movie
 export const getMovie = async (movieId) => {
 	const response = await fetch(
-		`${url}${movieId}?append_to_response=videos,credits&&language=en-US`,
+		`${movieUrl}/${movieId}?append_to_response=videos,credits&&language=en-US`,
 		options
 	);
 	const data = await response.json();

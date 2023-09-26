@@ -12,7 +12,7 @@ const MovieDetails = () => {
 
   if(!movie) content=<p>Resource not found</p>
 
-  if(loading) content = <PulseLoader />
+  if(loading) content = <PulseLoader color='#be123c' />
 
   if(isError) content = <p>{`Ooops! seems like we encountered an error: ${error}`}</p>
 

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
 import useSearch from '../hooks/useSearch'
 
 const Navbar = () => {

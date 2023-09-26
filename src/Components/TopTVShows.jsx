@@ -1,10 +1,10 @@
 import React from 'react'
-import { useTopMovies } from '../hooks/useMovies'
 import { PulseLoader } from 'react-spinners';
-import Card from './Card';
 import useSearch from '../hooks/useSearch';
+import { useTopMovies } from '../hooks/useMovies';
+import Card from './Card';
 
-const TopMovies = () => {
+const TopTVShows = () => {
     const {loading, isError, error, topMovies} = useTopMovies()
     const  {searchWord, results, searching} = useSearch()
 
@@ -57,4 +57,4 @@ const TopMovies = () => {
   )
 }
 
-export default TopMovies
+export default TopTVShows
