@@ -7,6 +7,8 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 import { doc, updateDoc } from "firebase/firestore"
 import { useFormik } from "formik"
 import { loginSchema } from "./schemas"
+import MetaData from "../../components/Meta/MetaData"
+import { auth, db } from "../../api/firebase"
 
 
 const Login = () => {
@@ -27,7 +29,7 @@ const Login = () => {
         online: true,
       })
       toast.success("Login successful");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       toast.error(error);
     }
@@ -37,7 +39,7 @@ const Login = () => {
     try {
       await signInWithPopup(auth, provider)
       toast.success('Login successfull')
-      navigate('/dashboard')
+      navigate('/')
     } catch (error) {
       toast.error(error.message)
     } 
@@ -55,19 +57,21 @@ const Login = () => {
   )
 
   return (
-    <section className='w-full h-screen  flex items-center justify-center bg-[url("/images/authBg.jpg")] bg-cover bg-center bg-no-repeat'>
+    <section className='w-full h-screen  flex items-center justify-center bg-[url("/images/auth.jpg")] bg-cover bg-right bg-no-repeat'>
       <MetaData title={'Sign into your account'} />
-      <div className="flex justify-start flex-col items-center border p-6  border-teal-700 rounded-lg shadow-teal-700 shadow-md bg-white opacity-90 w-[90%] md:w-auto gap-2">
+      <div className="flex justify-start flex-col items-center border p-6 bg-white opacity-90 w-[90%] md:w-auto gap-2">
         <div className="title flex flex-col items-center ">
           <h4 className="text-3xl text-gray-700 text-center">Hello again!</h4>
-          <span className='py-4 text-xl w-2/3 text-center text-gray-700'>Log in into your account</span>
+          <span className='py-4 text-xl text-center text-gray-700'>Log in into your account</span>
         </div>
         <button 
-          className="shadow flex items-center rounded"
+          className="flex items-center shadow"
           onClick={registerWithGoogle}
         >
-          <FcGoogle className="w-6"/>
-          <p className="text-white bg-teal-700 p-1 font-semibold rounded-r">Sign in with google</p>
+          <div className="px-2">
+            <FcGoogle/>
+          </div>
+          <p className="text-white bg-[#be123c] p-2 font-semibold">Sign in with google</p>
         </button>
         <span className="text-gray-700 font-semibold">OR</span>
         <form className='py-1' onSubmit={handleSubmit}>
@@ -75,7 +79,7 @@ const Login = () => {
               <div className='flex flex-col gap-2 w-[100%]'>
                 <label className="sr-only text-gray-700 text-xl">Email</label>
                 <input
-                  className={`p-2 border rounded-lg ${errors.email && touched.email ? `outline outline-1 outline-red-700` : `outline-teal-700`}`}
+                  className={`p-2 border ${errors.email && touched.email ? `outline outline-1 outline-red-700` : `outline-[#be123c]`}`}
                   type="email"
                   id="email"
                   onChange={handleChange}
@@ -88,7 +92,7 @@ const Login = () => {
             <div className='flex flex-col gap-2 relative'>
               <label className="sr-only text-gray-700 text-xl">Password</label>
               <input
-                className={`p-2 border rounded-lg ${errors.password && touched.password ? `outline outline-1 outline-red-700` : `outline-teal-700`}`}
+                className={`p-2 border ${errors.password && touched.password ? `outline outline-1 outline-red-700` : `outline-[#be123c]`}`}
                 type={!passwordVisible ? 'password' : 'text'}
                 id="password"
                 onChange={handleChange}
@@ -100,11 +104,11 @@ const Login = () => {
               {passwordVisible && <AiOutlineEyeInvisible  className={`absolute ${errors.password && touched.password && `top-[20%]`} top-[33%] right-3`} onClick={handlePassword}/>}
               {!passwordVisible && <AiOutlineEye  className={`absolute ${errors.password && touched.password && `top-[20%]`} top-[33%] right-3`} onClick={handlePassword}/>}
             </div>
-            <button type='submit' disabled={isSubmitting} className='bg-teal-700 rounded-lg p-3 text-white font-semibold'>Log in</button>
+            <button type='submit' disabled={isSubmitting} className='bg-[#be123c] p-3 text-white font-semibold'>Log in</button>
           </div>
         </form>
         <div className='py-4'>
-          <span className='text-gray-700'>Not registered? <Link to='/register' className='text-teal-700'>Register</Link></span>
+          <span className='text-gray-700'>Not registered? <Link to='/register' className='text-[#be123c]'>Register</Link></span>
         </div>
       </div>
     </section>

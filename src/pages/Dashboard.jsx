@@ -1,6 +1,6 @@
 import React from 'react'
-import Sidebar from '../Components/Sidebar'
-import MovieDetails from '../Components/MovieDetails'
+import Sidebar from '../components/Sidebar'
+import MovieDetails from '../components/MovieDetails'
 
 const Dashboard = () => {
   return (

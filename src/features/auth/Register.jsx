@@ -4,10 +4,10 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from "react-toastify"
 import { doc, setDoc } from "firebase/firestore"; 
-import { auth, db } from "../../apis/firebase"
+import { auth, db } from "../../api/firebase"
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth"
 import { useFormik } from "formik";
-import MetaData from "../../Components/Meta/MetaData"
+import MetaData from "../../components/Meta/MetaData"
 import { registerSchema } from "./schemas";
 
 
@@ -36,7 +36,7 @@ const Register = () => {
         photoUrl: ""
       });
       toast.success('Registration successfull')
-      navigate('/dashboard')
+      navigate('/')
     } catch (error) {
       toast.error(error.message);
     }
@@ -54,7 +54,7 @@ const Register = () => {
         photoUrl: user.photoURL
       });
       toast.success('Login successfull')
-      navigate('/dashboard')
+      navigate('/')
     } catch (error) {
       toast.error(error.message)
     } 
@@ -72,26 +72,28 @@ const Register = () => {
   )
 
   return (
-    <section className='w-full flex items-center justify-center bg-[url("/images/authBg.jpg")] bg-cover bg-center bg-no-repeat'>
+    <section className='w-full flex items-center justify-center bg-[url("/images/auth.jpg")] bg-cover bg-right bg-no-repeat'>
       <MetaData title={'Register an account'} />
-      <div className="flex justify-center flex-col items-center border p-6 h-[auto] my-20 gap-2  border-teal-700 rounded-lg shadow-teal-700 shadow-md bg-white opacity-90 w-[90%] md:w-auto">
+      <div className="flex justify-center flex-col items-center p-6 h-[auto] my-20 gap-4 bg-white opacity-90 w-[90%] md:w-auto">
         <div className="title flex flex-col items-center">
           <h4 className="text-3xl text-gray-700 text-center">Explore more by joining us</h4>
         </div>
         <button 
-          className="shadow flex items-center rounded"
+          className="shadow flex items-center"
           onClick={registerWithGoogle}
         >
-          <FcGoogle className="w-6"/>
-          <p className="text-white bg-teal-700 p-1 font-semibold rounded-r">Register with google</p>
+          <div className="px-2">
+            <FcGoogle/>
+          </div>
+          <p className="text-white bg-[#be123c] p-2 font-semibold">Register with google</p>
         </button>
-        <span className="text-gray-700 font-semibold">OR</span>
+        <span className="text-gray-700 font-semibold py-2">OR</span>
         <form className='w-[90%]' onSubmit={handleSubmit}>
               <div className='flex flex-col gap-4 items-center'>
                 <div className='flex flex-col gap-2 w-[100%]'>
                   <label className="text-gray-700 text-md">Name</label>
                   <input
-                    className={`p-2 border rounded-lg ${errors.displayName && touched.displayName ? `outline outline-1 outline-red-700` : `outline-teal-700`}`}
+                    className={`p-2 border ${errors.displayName && touched.displayName ? `outline outline-1 outline-red-700` : `outline-[#be123c]`}`}
                     type="text"
                     value={values.displayName}
                     onChange={handleChange}
@@ -105,7 +107,7 @@ const Register = () => {
                 <div className='flex flex-col gap-2 w-[100%]'>
                   <label className="text-gray-700 text-md">Email</label>
                   <input
-                    className={`p-2 border rounded-lg ${errors.email && touched.email ? `outline outline-1 outline-red-700` : `outline-teal-700`}`}
+                    className={`p-2 border ${errors.email && touched.email ? `outline outline-1 outline-red-700` : `outline-[#be123c]`}`}
                     type="email"
                     id="email"
                     onChange={handleChange}
@@ -119,7 +121,7 @@ const Register = () => {
                   <div className='flex flex-col gap-2 relative w-[100%]'>
                     <label className="text-gray-700 text-md">Password</label>
                     <input
-                      className={`p-2 border rounded-lg ${errors.password && touched.password ? `outline outline-1 outline-red-700` : `outline-teal-700`}`}
+                      className={`p-2 border ${errors.password && touched.password ? `outline outline-1 outline-red-700` : `outline-[#be123c]`}`}
                       type={!passwordVisible ? 'password' : 'text'}
                       id="password"
                       onChange={handleChange}
@@ -132,11 +134,11 @@ const Register = () => {
                     {!passwordVisible && <AiOutlineEye  className={`absolute ${errors.password && touched.password && `top-[42%]`} top-[62%] right-3`} onClick={handlePassword}/>}
                     {errors.password && touched.password && <p className='text-red-700'>{errors.password}</p>}
                   </div>
-              <button type="submit" disabled={isSubmitting} className='bg-teal-700 rounded-lg p-3 text-white font-semibold w-[100%]'>Register</button>
+              <button type="submit" disabled={isSubmitting} className='bg-[#be123c] p-3 text-white font-semibold w-[100%]'>Register</button>
           </div>
         </form>
         <div>
-          <span className='text-gray-700'>Already registered? <Link to='/login' className='text-teal-700'>Log in</Link></span>
+          <span className='text-gray-700'>Already registered? <Link to='/login' className='text-[#be123c]'>Log in</Link></span>
         </div>
         
       </div>

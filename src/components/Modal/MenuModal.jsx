@@ -28,14 +28,14 @@ const MenuModal = ({handleAuthMenu, handleLogout}) => {
                 <ul className='flex flex-col gap-2 w-full my-6 px-4'>
                     <Link 
                         to='/login' 
-                        className='w-full text-center cursor-pointer hover:bg-teal-700 hover:text-white p-2 rounded-lg'
+                        className='w-full text-center cursor-pointer hover:bg-[#be123c] hover:text-white p-2 rounded-lg'
                         onClick={handleAuthMenu}
                     >
                         Log in
                     </Link>
                     <Link 
                         to='/register' 
-                        className='w-full text-center cursor-pointer hover:bg-teal-700 hover:text-white p-2 rounded-lg'
+                        className='w-full text-center cursor-pointer hover:bg-[#be123c] hover:text-white p-2 rounded-lg'
                         onClick={handleAuthMenu}
                     >
                         Register

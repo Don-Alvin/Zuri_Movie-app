@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Components/Header'
-import Featured from '../Components/Featured'
-import Footer from '../Components/Footer'
+import Header from '../components/Header'
+import Featured from '../components/Featured'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (

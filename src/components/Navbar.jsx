@@ -3,6 +3,12 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import useSearch from '../hooks/useSearch'
+import { toast } from 'react-toastify'
+import { doc, updateDoc } from 'firebase/firestore'
+import { signOut } from 'firebase/auth'
+import useAuth from '../hooks/useAuth'
+import { db } from '../api/firebase'
+import MenuModal from './Modal/MenuModal'
 
 const Navbar = () => {
 
@@ -12,6 +18,7 @@ const Navbar = () => {
   const [isSearchResults, setIsSearchResults] = useState(false)
 
   const { searchWord, setSearchWord } = useSearch()
+  const { setUser } = useAuth()
 
   const navigate = useNavigate();
 
@@ -69,10 +76,10 @@ const Navbar = () => {
             <AiOutlineSearch className='text-white flex items-center justify-center'/>
           </button>
         </div>
-        <div className='flex items-center gap-2'>
-          <span className='hidden lg:block text-white font-semibold'>Sign in</span>
+        <div>
           <HiMenuAlt4
-            className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white`}
+            className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white cursor-pointer`}
+            onClick={handleAuthMenu}
           />
         </div>
         {isAuthMenuOpen && ( 
