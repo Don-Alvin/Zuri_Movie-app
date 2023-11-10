@@ -1,10 +1,14 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import Home from "./Pages/Home"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ToastContainer } from "react-toastify"
-import Dashboard from "./Pages/Dashboard"
+import "react-toastify/dist/ReactToastify.css"
+import { HelmetProvider } from "react-helmet-async"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { SearchContextProvider } from "./Context/SearchContext"
+import { AuthContextProvider } from "./context/AuthContext"
+
+import Dashboard from "./pages/Dashboard"
+import Home from "./pages/Home"
 
 const App = () => {
 
@@ -23,9 +27,13 @@ const App = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
+        <AuthContextProvider>
           <SearchContextProvider>
-            <RouterProvider router={router} />
+            <HelmetProvider>
+             <RouterProvider router={router} /> 
+            </HelmetProvider>
           </SearchContextProvider>
+        </AuthContextProvider>
         <ToastContainer
           position="top-right"
           autoClose={5000}

@@ -1,18 +1,28 @@
 import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
 import useSearch from '../hooks/useSearch'
 
 const Navbar = () => {
 
   const [isActive, setIsActive] = useState(false)
+  const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isSearchResults, setIsSearchResults] = useState(false)
 
   const { searchWord, setSearchWord } = useSearch()
+
+  const navigate = useNavigate();
 
   const handleSearchInputChange = (e) => {
     const inputText = e.target.value;
     setSearchWord(inputText)
   };
+
+  const handleAuthMenu = () => {
+    setIsAuthMenuOpen(!isAuthMenuOpen)
+  }
 
   const activeNavbar = () => {
     if(window.scrollY >= 80){
@@ -20,6 +30,23 @@ const Navbar = () => {
     }else setIsActive(false)
   }
   window.addEventListener("scroll", activeNavbar)
+
+  const handleLogout = async () => {
+    handleAuthMenu()
+    const docRef = doc(db, "users", user.uid)
+    try {
+       await updateDoc(docRef, {
+        online: false,
+      })
+        signOut(auth)
+        setUser(null)
+        navigate('/') 
+    } catch (error) {
+       throw new Error("Logout failed")
+       toast.error("error.message") 
+    }
+    
+  };
 
   return (
     <nav className={`h-80px fixed z-50 flex items-center justify-between px-6 lg:px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
@@ -48,6 +75,9 @@ const Navbar = () => {
             className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white`}
           />
         </div>
+        {isAuthMenuOpen && ( 
+                    <MenuModal handleAuthMenu={handleAuthMenu} handleLogout={handleLogout}/>              
+                )}
       </nav>
   )
 }
