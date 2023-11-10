@@ -13,7 +13,7 @@ const options = {
 // Fetch popular movies
 export const getTopMovies = async () => {
 	const response = await fetch(
-		`${movieUrl}/popular?language=en-US&page=1`,
+		`${movieUrl}/now_playing?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();
@@ -23,7 +23,7 @@ export const getTopMovies = async () => {
 // Fetch trending movies
 export const getTrendingMovies = async () => {
 	const response = await fetch(
-		`${movieUrl}/popular?language=en-US&page=1`,
+		`${movieUrl}/now_playing?language=en-US&page=1`,
 		options
 	);
 	const data = await response.json();

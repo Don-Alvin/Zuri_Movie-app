@@ -31,12 +31,12 @@ const Hero = () => {
                     alt={movie.title} 
                 />
                 <div className='leading-10 px-6 lg:px-14 absolute top-24 lg:top-[30%] flex flex-col gap-6'>
-                    <Link to={`movie/${movie.id}`} className='text-white text-4xl font-bold lg:w-[300px]'>{movie.title}</Link>
+                    <Link to={`movie/${movie.id}`} className='text-white text-4xl font-bold'>{movie.title}</Link>
                     <span className='flex gap-2 text-white'>
                         <img className='object-contain' src='/images/imdb.png' alt="rating" />
-                        {movie.vote_average}
+                        {movie.vote_average.toFixed(1)}
                     </span>
-                    <p className='tracking-wide text-white lg:text-lg lg:w-[600px]'>{movie.overview}</p>
+                    <p className='tracking-wide text-white lg:text-lg '>{movie.overview}</p>
                     <Link to={`movie/${movie.id}`} className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px] rounded'>
                         <BsPlayCircle />
                         Watch trailer
