@@ -37,7 +37,7 @@ const Hero = () => {
                         {movie.vote_average.toFixed(1)}
                     </span>
                     <p className='tracking-wide text-white lg:text-lg '>{movie.overview}</p>
-                    <Link to={`movie/${movie.id}`} className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px] rounded'>
+                    <Link to={`movie/${movie.id}`} className='flex items-center justify-center p-1 md:p-2 gap-2 bg-[#BE123C] text-white md:w-[150px]'>
                         <BsPlayCircle />
                         Watch trailer
                     </Link>

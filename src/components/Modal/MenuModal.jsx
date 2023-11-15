@@ -18,10 +18,17 @@ const MenuModal = ({handleAuthMenu, handleLogout}) => {
             {user ? (
                 <ul className='flex flex-col w-full my-6 px-4'>
                     <Link 
-                        className='hover:bg-teal-700 hover:text-white w-full text-center cursor-pointer p-2 rounded-lg'
-                        onClick={handleLogout}
+                        className='hover:bg-[#be123c] hover:text-white w-full text-center cursor-pointer p-2 rounded-lg'
+                        onClick={() => handleLogout()}
                     >
                         Log out
+                    </Link>
+                    <Link
+                        to={`/${user.uid}`}
+                        className='hover:bg-[#be123c] hover:text-white w-full text-center cursor-pointer p-2 rounded-lg'
+                        onClick={handleLogout}
+                    >
+                        My profile
                     </Link>
                 </ul> 
             ) : (

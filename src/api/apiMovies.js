@@ -1,5 +1,4 @@
 const movieUrl = "https://api.themoviedb.org/3/movie";
-const tvURL = "https://api.themoviedb.org/3/tv";
 const key = import.meta.env.VITE_API_KEY;
 const options = {
 	method: "GET",

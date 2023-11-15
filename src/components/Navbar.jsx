@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useSearch from '../hooks/useSearch'
 import { toast } from 'react-toastify'
 import { doc, updateDoc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
 import useAuth from '../hooks/useAuth'
-import { db } from '../api/firebase'
+import { auth, db } from '../api/firebase'
 import MenuModal from './Modal/MenuModal'
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isSearchResults, setIsSearchResults] = useState(false)
 
   const { searchWord, setSearchWord } = useSearch()
-  const { setUser } = useAuth()
+  const { setUser, user } = useAuth()
 
   const navigate = useNavigate();
 
@@ -61,6 +61,10 @@ const Navbar = () => {
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
         </div>
+        <div className='lg:flex gap-6 hidden'>
+          <Link className='text-white font-semibold text-[18px]'>Movies</Link>
+          <Link className='text-white font-semibold text-[18px]'>TV Shows</Link>
+        </div>
         <div className='flex w-[85%] lg:w-[40%] justify-between border border-white rounded'>
           <input 
             type="search" 
@@ -83,8 +87,8 @@ const Navbar = () => {
           />
         </div>
         {isAuthMenuOpen && ( 
-                    <MenuModal handleAuthMenu={handleAuthMenu} handleLogout={handleLogout}/>              
-                )}
+          <MenuModal handleAuthMenu={handleAuthMenu} handleLogout={handleLogout}/>              
+          )}
       </nav>
   )
 }
