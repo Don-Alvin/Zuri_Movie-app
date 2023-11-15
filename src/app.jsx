@@ -11,16 +11,19 @@ import Dashboard from "./pages/Dashboard"
 import Home from "./pages/Home"
 import Login from "./features/auth/Login"
 import Register from "./features/auth/Register"
+import Layout from "./components/Layout.jsx"
 
 const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-          <Route path="/" element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/:userId' element={<Dashboard />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+            <Route path='movies/:movieId' element={<Dashboard />} />
+          </Route>
       </Route>
     )
   )

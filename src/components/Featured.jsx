@@ -1,7 +1,6 @@
-import React from 'react'
-import TopMovies from './TopMovies'
-import useSearch from '../hooks/useSearch'
-import TopTVShows from './TopTVShows'
+import TopTVShows from "../features/series/TopTVShows"
+import TopMovies from "../features/movies/TopMovies"
+import useSearch from "../hooks/useSearch"
 
 const Featured = () => {
   const {searchWord} = useSearch()

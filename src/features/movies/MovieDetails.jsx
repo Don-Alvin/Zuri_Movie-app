@@ -1,12 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { useGetMovie } from '../hooks/useMovies'
 import { PulseLoader } from 'react-spinners'
-import Footer from './Footer'
+import { useGetMovie } from '../../hooks/useMovies'
 
 const MovieDetails = () => {
   const { movieId } = useParams()
   const { movie, loading, isError, error } = useGetMovie(movieId)
+
+  console.log(movieId);
 
   let content;
 
@@ -81,7 +82,6 @@ const MovieDetails = () => {
               </a>
             </aside>
           </article>
-          <Footer />
         </section>
       </section>
     )

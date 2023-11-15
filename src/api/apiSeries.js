@@ -15,6 +15,5 @@ export const getTopSeries = async () => {
 		options
 	);
 	const data = await response.json();
-    console.log(data.results);
 	return data.results;
 };

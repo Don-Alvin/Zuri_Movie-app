@@ -56,7 +56,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`h-80px fixed z-50 flex items-center justify-between px-6 lg:px-14 py-3 w-full ${isActive ? `bg-[#111827]`: `bg-transparent`}`}>
+    <nav className={`h-80px sticky top-0 bg-[#111827] z-10 flex items-center justify-between px-6 lg:px-14 py-3 w-full`}>
         <div className='hidden lg:flex items-center  gap-2 lg:gap-[24px]'>
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
           <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>

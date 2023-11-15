@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import TVCard from './TVCard';
-import { useTopSeries } from '../hooks/useSeries';
+import { useTopSeries } from '../../hooks/useSeries';
 import { PulseLoader } from 'react-spinners';
 
 const TopTVShows = () => {

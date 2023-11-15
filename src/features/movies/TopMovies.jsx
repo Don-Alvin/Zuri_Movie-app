@@ -1,8 +1,8 @@
 import React from 'react'
-import { useTopMovies } from '../hooks/useMovies'
+import { useTopMovies } from '../../hooks/useMovies'
 import { PulseLoader } from 'react-spinners';
 import Card from './Card';
-import useSearch from '../hooks/useSearch';
+import useSearch from '../../hooks/useSearch';
 import { Link } from 'react-router-dom';
 
 const TopMovies = () => {
