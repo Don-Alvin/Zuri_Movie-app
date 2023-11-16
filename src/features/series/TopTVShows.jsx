@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import TVCard from './TVCard';
 import { useTopSeries } from '../../hooks/useSeries';
 import { PulseLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
 
 const TopTVShows = () => {
     const {loading, isError, error, topSeries} = useTopSeries()

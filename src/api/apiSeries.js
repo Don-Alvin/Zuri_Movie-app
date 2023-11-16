@@ -11,9 +11,19 @@ const options = {
 
 export const getTopSeries = async () => {
 	const response = await fetch(
-		`${tvURL}tv/top_rated?language=en-US`,
+		`https://api.themoviedb.org/3/trending/tv/day?language=en-US`,
 		options
 	);
 	const data = await response.json();
 	return data.results;
+};
+
+// get a series
+export const getSeries = async (id) => {
+	const response = await fetch(
+		`${tvURL}/${id}?append_to_response=videos,credits&&language=en-US`,
+		options
+	);
+	const data = await response.json();
+	return data;
 };

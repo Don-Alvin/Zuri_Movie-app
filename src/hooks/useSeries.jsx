@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTopSeries } from "../api/apiSeries";
+import { getSeries, getTopSeries } from "../api/apiSeries";
 
 export const useTopSeries = () => {
     const {
@@ -14,3 +14,14 @@ export const useTopSeries = () => {
 
 	return { loading, error, isError, topSeries };
 }
+
+// Get a series
+export const useGetSeries = (seriesId) => {
+	const {isInitialLoading: loading, isError, error, data: series} = useQuery({
+		queryKey: ['series', seriesId],
+		queryFn: () => getSeries(seriesId)
+	})
+
+	return {loading, isError, error, series}
+}
+

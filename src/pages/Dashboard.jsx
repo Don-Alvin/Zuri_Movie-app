@@ -11,7 +11,6 @@ const Dashboard = () => {
   return (
     <main className='flex'>
         <Sidebar />
-        <MovieDetails />
     </main>
   )
 }

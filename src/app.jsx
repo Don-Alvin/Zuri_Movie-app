@@ -12,6 +12,7 @@ import Home from "./pages/Home"
 import Login from "./features/auth/Login"
 import Register from "./features/auth/Register"
 import Layout from "./components/Layout.jsx"
+import Details from "./pages/Details"
 
 const App = () => {
 
@@ -22,7 +23,8 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
-            <Route path='movies/:movieId' element={<Dashboard />} />
+            <Route path='movies/:id' element={<Details />} />
+            <Route path="/:userId" element={<Dashboard />} />
           </Route>
       </Route>
     )

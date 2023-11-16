@@ -4,10 +4,8 @@ import { PulseLoader } from 'react-spinners'
 import { useGetMovie } from '../../hooks/useMovies'
 
 const MovieDetails = () => {
-  const { movieId } = useParams()
-  const { movie, loading, isError, error } = useGetMovie(movieId)
-
-  console.log(movieId);
+  const { id } = useParams()
+  const { movie, loading, isError, error } = useGetMovie(id)
 
   let content;
 
