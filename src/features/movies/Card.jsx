@@ -31,7 +31,7 @@ const Card = ({title, date, image, rating, id}) => {
       />
       <div className="flex flex-col items-center">
         <span className='text-gray-500 text-sm'data-testid="release-date">{formattedReleaseDate}</span>
-        <Link to={`movies/${id}`} className='underline font-semibold text-center text-[#111827]' data-testid="movie-title">{title}</Link>
+        <Link to={`/movie/${id}`} className='underline font-semibold text-center text-[#111827]' data-testid="movie-title">{title}</Link>
         <div className='flex gap-2'>
           <img
             className='object-contain'

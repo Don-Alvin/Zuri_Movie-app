@@ -21,7 +21,7 @@ export const getTopSeries = async () => {
 // get a series
 export const getSeries = async (id) => {
 	const response = await fetch(
-		`${tvURL}/${id}?append_to_response=videos,credits&&language=en-US`,
+		`${tvURL}/tv/${id}?language=en-US`,
 		options
 	);
 	const data = await response.json();

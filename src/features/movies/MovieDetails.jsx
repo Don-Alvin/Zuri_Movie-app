@@ -4,7 +4,8 @@ import { PulseLoader } from 'react-spinners'
 import { useGetMovie } from '../../hooks/useMovies'
 
 const MovieDetails = () => {
-  const { id } = useParams()
+  const params  = useParams()
+  const id = params.id
   const { movie, loading, isError, error } = useGetMovie(id)
 
   let content;
@@ -31,8 +32,8 @@ const MovieDetails = () => {
 
     content = (
       <section key={movie.id}>
-        <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6'>
-          <div className='rounded-lg h-[60vh] p-2 w-full lg:w-[50%] px-4' key={movie.id}>
+        <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6' key={movie.id}>
+          <div className='rounded-lg h-[60vh] p-2 w-full lg:w-[50%] px-4' >
             <iframe className='w-full rounded-lg h-full lg:w-full mx-auto' src={`https://www.youtube.com/embed/${trailer[0].key}`} ></iframe>
           </div>
           <article className='px-4 lg:w-[50%]'>
@@ -47,7 +48,7 @@ const MovieDetails = () => {
                 <li className='text-sm' data-testid="movie-runtime">{movie.runtime}m</li>
                 <li className='flex gap-2'>
                   {movie.genres.map(genre => (
-                    <span className='text-[#be123c] text-sm border border-[#be123c] p-[2px] rounded-lg'>{genre.name}</span>
+                    <span key={genre.name} className='text-[#be123c] text-sm border border-[#be123c] p-[2px] rounded-lg'>{genre.name}</span>
                   ))}
                 </li>
               </ul>
@@ -61,7 +62,7 @@ const MovieDetails = () => {
                 </li>
                 <li>
                   Writers: 
-                  {writers.slice(0, 2).map(writer => <span className='text-[#be123c]' key={writer.name}> {writer.name}, </span>)}
+                  {writers.slice(0, 2).map(writer => <span className='text-[#be123c]' key={Math.random()}> {writer.name}, </span>)}
                 </li>
                 <li>
                   Stars:

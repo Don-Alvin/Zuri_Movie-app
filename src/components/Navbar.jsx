@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { Link, useNavigate } from 'react-router-dom'
@@ -27,7 +27,7 @@ const Navbar = () => {
     setSearchWord(inputText)
   };
 
-  const handleAuthMenu = () => {
+ const handleAuthMenu = () => {
     setIsAuthMenuOpen(!isAuthMenuOpen)
   }
 
@@ -83,7 +83,7 @@ const Navbar = () => {
         <div>
           <HiMenuAlt4
             className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white cursor-pointer`}
-            onClick={handleAuthMenu}
+            onClick={() => handleAuthMenu()}
           />
         </div>
         {isAuthMenuOpen && ( 
