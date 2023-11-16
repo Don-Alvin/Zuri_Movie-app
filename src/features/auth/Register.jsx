@@ -72,9 +72,9 @@ const Register = () => {
   )
 
   return (
-    <section className='w-full h-screen  flex items-center justify-center lg:justify-start bg-[url("/images/auth.jpg")] bg-cover lg:bg-cover bg-center bg-no-repeat'>
+    <section className='w-full h-screen  flex items-center justify-center bg-[url("/images/auth.jpg")] bg-cover lg:bg-cover bg-center bg-no-repeat'>
       <MetaData title={'Register an account'} />
-      <div className="flex justify-start flex-col items-center border p-6 bg-white opacity-90 w-[90%] lg:w-[50%] lg:h-full lg:justify-center gap-2">
+      <div className="flex justify-start flex-col items-center border p-6 bg-white opacity-90 w-[90%] lg:w-[50%] lg:justify-center gap-2">
         <div className="title flex flex-col items-center">
           <h4 className="text-3xl text-gray-700 text-center">Explore more by joining us</h4>
         </div>
@@ -130,8 +130,8 @@ const Register = () => {
                       placeholder='Enter your password'
                       autoComplete="off"
                     />
-                    {passwordVisible && <AiOutlineEyeInvisible  className={`absolute ${errors.password && touched.password && `top-[41.5%]`} top-[62%] right-3`} onClick={handlePassword}/>}
-                    {!passwordVisible && <AiOutlineEye  className={`absolute ${errors.password && touched.password && `top-[41.5%]`} top-[62%] right-3`} onClick={handlePassword}/>}
+                    {passwordVisible && <AiOutlineEyeInvisible  className={`absolute ${errors.password && touched.password && `top-[41%]`} top-[62%] right-3`} onClick={handlePassword}/>}
+                    {!passwordVisible && <AiOutlineEye  className={`absolute ${errors.password && touched.password && `top-[41%]`} top-[62%] right-3`} onClick={handlePassword}/>}
                     {errors.password && touched.password && <p className='text-red-700'>{errors.password}</p>}
                   </div>
               <button type="submit" disabled={isSubmitting} className='bg-[#be123c] p-3 text-white font-semibold w-[100%]'>Register</button>
