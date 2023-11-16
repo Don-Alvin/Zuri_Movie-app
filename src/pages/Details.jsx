@@ -5,7 +5,6 @@ import SeriesDetails from '../features/series/SeriesDetails'
 
 const Details = () => {
   const params = useParams()
-  console.log(params);
   const media = params.media
   return (
     <div>

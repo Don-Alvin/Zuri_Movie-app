@@ -50,6 +50,7 @@ const TopMovies = () => {
                                 date={movie.release_date}
                                 rating={movie.vote_average}
                                 id={movie.id}
+                                media={movie.media_type}
                             />
                         </div>
                     ))}

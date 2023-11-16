@@ -31,4 +31,13 @@ export const useGetMovie = (movieId) => {
 }
 
 
+export const useSearchMovies = (searchWord) => {
+	const { isInitialLoading: loading, isError, error, data: search} = useQuery({
+		queryKey: ['search', searchWord],
+		queryFn: () => searchMovies(searchWord)
+	})
+
+	return { loading, isError, error, search}
+}
+
 

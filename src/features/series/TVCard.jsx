@@ -25,7 +25,7 @@ const TVCard = ({title, image, rating, id}) => {
         data-testid="movie-poster"
       />
       <div className="flex flex-col items-center">
-        <Link to={`series/${id}`} className='underline font-semibold text-center text-[#111827]' data-testid="movie-title">{title}</Link>
+        <Link to={`tv/${id}`} className='underline font-semibold text-center text-[#111827]' data-testid="movie-title">{title}</Link>
         <div className='flex gap-2'>
           <img
             className='object-contain'

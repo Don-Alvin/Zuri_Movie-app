@@ -44,10 +44,10 @@ const SeriesDetails = () => {
                   <img className='object-contain' src='/images/imdb.png' alt='imdb' />
                   {series.vote_average.toFixed(1)}
                 </li>
-                <li>
+                <ul>
                   <li className='text-sm' data-testid="movie-runtime">Seasons: {series.number_of_seasons}</li>
                   <li className='text-sm' data-testid="movie-runtime">Episodes: {series.number_of_episodes}</li>
-                </li>
+                </ul>
                 
                 <li className='flex gap-2'>
                   {series.genres.map(genre => (
@@ -59,14 +59,20 @@ const SeriesDetails = () => {
               {series.overview}
               </p>
               <ul className='flex flex-col gap-2 lg:gap-6'>
-                <li>
-                  Director:
-                  <span className='text-[#be123c]'> {director[0].name}</span>
+                {director && (
+                  <li>
+                    Director:
+                  <span className='text-[#be123c]'> {director[0]?.name}</span>
                 </li>
-                <li>
-                  Writers: 
-                  {writers.slice(0, 2).map(writer => <span className='text-[#be123c]' key={Math.random()}> {writer.name}, </span>)}
-                </li>
+                )}
+                
+                {writers && (
+                  <li>
+                    Writers: 
+                    {writers.slice(0, 2).map(writer => <span className='text-[#be123c]' key={Math.random()}> {writer.name}, </span>)}
+                  </li>
+                )}
+                
                 <li>
                   Stars:
                     {stars.map(star => <span className='text-[#be123c]' key={star.name}> {star.name}, </span>)}

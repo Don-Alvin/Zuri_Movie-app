@@ -9,6 +9,7 @@ import { signOut } from 'firebase/auth'
 import useAuth from '../hooks/useAuth'
 import { auth, db } from '../api/firebase'
 import MenuModal from './Modal/MenuModal'
+import Search from './Search'
 
 const Navbar = () => {
 
@@ -22,14 +23,14 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const handleSearchInputChange = (e) => {
-    const inputText = e.target.value;
-    setSearchWord(inputText)
-  };
-
  const handleAuthMenu = () => {
     setIsAuthMenuOpen(!isAuthMenuOpen)
   }
+
+  useEffect(() => {
+    if(searchWord) setIsSearchOpen(true)
+    if(!searchWord) setIsSearchOpen(false)
+  }, [searchWord])
 
   const activeNavbar = () => {
     if(window.scrollY >= 80){
@@ -55,31 +56,43 @@ const Navbar = () => {
     
   };
 
+  const clearSearch = () => {
+    setSearchWord('')
+    setIsSearchOpen(false)
+  }
+
   return (
-    <nav className={`h-80px sticky top-0 bg-[#111827] z-10 flex items-center justify-between px-6 lg:px-14 py-3 w-full`}>
-        <div className='hidden lg:flex items-center  gap-2 lg:gap-[24px]'>
-          <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
-          <Link to='/' className='text-[24px] text-white font-bold'>MovieBox</Link>
+    <nav className={`h-80px sticky top-0 bg-[#111827] z-10 flex items-center justify-between px-2 lg:px-14 py-3 w-full`}>
+      {isSearchOpen && <div className='bg-black opacity-70 absolute inset-0 h-screen' onClick={clearSearch}></div>}
+        <div className='flex items-center gap-2 lg:gap-[24px]'>
+          <img className='w-[30px] h-[30px] lg:w-[50px] lg:h-[50px]' src='/images/logo.png' alt="logo" />
+          <Link to='/' className='hidden lg:block lg:text-[24px] text-white font-bold'>MovieBox</Link>
+        </div>
+        <div className='flex flex-col w-[75%] lg:w-[40%] justify-between rounded relative'>
+          <div className='flex w-full justify-between rounded border border-white'>
+            <input 
+              type="search" 
+              className='outline-none p-1 w-[90%] bg-transparent text-white placeholder:text-white' 
+              placeholder='What do you want to watch?'
+              value={searchWord}
+              onChange={(e) => setSearchWord(e.target.value)}
+            />
+            <button 
+              type='button'
+              className='w-6 p-1 mx-auto'
+            >
+              <AiOutlineSearch className='text-white flex items-center justify-center'/>
+            </button>
+          </div>
+          {isSearchOpen && (
+            <Search />
+          )}
         </div>
         <div className='lg:flex gap-6 hidden'>
           <Link to='/movies' className='text-white font-semibold text-[18px]'>Movies</Link>
-          <Link to='/series' className='text-white font-semibold text-[18px]'>TV Shows</Link>
+          <Link to='/tv' className='text-white font-semibold text-[18px]'>TV Shows</Link>
         </div>
-        <div className='flex w-[85%] lg:w-[40%] justify-between border border-white rounded'>
-          <input 
-            type="search" 
-            className='outline-none p-1 w-[90%] bg-transparent text-white placeholder:text-white' 
-            placeholder='What do you want to watch?'
-            value={searchWord}
-            onChange={handleSearchInputChange}
-          />
-          <button 
-            type='button'
-            className='w-6 p-1 mx-auto'
-          >
-            <AiOutlineSearch className='text-white flex items-center justify-center'/>
-          </button>
-        </div>
+        
         <div>
           <HiMenuAlt4
             className={` bg-[#be123c] rounded-full w-8 h-8 shadow text-white cursor-pointer`}
