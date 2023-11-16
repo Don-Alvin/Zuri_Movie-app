@@ -59,11 +59,11 @@ const Navbar = () => {
     <nav className={`h-80px sticky top-0 bg-[#111827] z-10 flex items-center justify-between px-6 lg:px-14 py-3 w-full`}>
         <div className='hidden lg:flex items-center  gap-2 lg:gap-[24px]'>
           <img className='w-[50px] h-[50px]' src='/images/logo.png' alt="logo" />
-          <h2 className='text-[24px] text-white font-bold'>MovieBox</h2>
+          <Link to='/' className='text-[24px] text-white font-bold'>MovieBox</Link>
         </div>
         <div className='lg:flex gap-6 hidden'>
-          <Link className='text-white font-semibold text-[18px]'>Movies</Link>
-          <Link className='text-white font-semibold text-[18px]'>TV Shows</Link>
+          <Link to='/movies' className='text-white font-semibold text-[18px]'>Movies</Link>
+          <Link to='/series' className='text-white font-semibold text-[18px]'>TV Shows</Link>
         </div>
         <div className='flex w-[85%] lg:w-[40%] justify-between border border-white rounded'>
           <input 

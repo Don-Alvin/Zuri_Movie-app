@@ -31,12 +31,12 @@ const MovieDetails = () => {
 
     content = (
       <section key={movie.id}>
-        <section className='w-full flex flex-col gap-4 lg:py-6'>
-          <div className='rounded-lg h-[60vh] p-2 w-full lg:w-full px-4' key={movie.id}>
+        <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6'>
+          <div className='rounded-lg h-[60vh] p-2 w-full lg:w-[50%] px-4' key={movie.id}>
             <iframe className='w-full rounded-lg h-full lg:w-full mx-auto' src={`https://www.youtube.com/embed/${trailer[0].key}`} ></iframe>
           </div>
-          <article className='grid lg:flex gap-2 px-4'>
-            <div className='lg:w-[60%] my-4 pr-6 text-gray-700 flex flex-col gap-2' key={movie.id}>
+          <article className='px-4 lg:w-[50%]'>
+            <div className='my-4 pr-6 text-gray-700 flex flex-col gap-2' key={movie.id}>
               <ul className='flex justify-between items-center mb-4 flex-wrap gap-2'>
                 <li className='text-[#111827] font-semibold text-xl' data-testid="movie-title">{movie.title}</li>
                 <li data-testid="movie-release-date">{formattedReleaseDate}</li>
@@ -69,16 +69,6 @@ const MovieDetails = () => {
                 </li>
               </ul>
             </div>
-            <aside className='lg:w-[40%] flex flex-col lg:items-end mt-4 gap-4'>
-              <a className='bg-[#be123c] flex w-[300px] p-2 lg:w-[90%] justify-center items-center gap-1 rounded-lg lg:p-[3px]'>
-                <img src='/images/tickets.png' alt='ticket' />
-                <span className='text-white'>See Showtimes</span>
-              </a>
-              <a className='bg-[#f7e3e8] flex w-[300px] lg:w-[90%] justify-center items-center gap-1 rounded-lg p-2'>
-                <AiOutlineMenu />
-                <span className='text-[#111827]'>More watch options</span>
-              </a>
-            </aside>
           </article>
         </section>
       </section>

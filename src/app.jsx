@@ -13,6 +13,8 @@ import Login from "./features/auth/Login"
 import Register from "./features/auth/Register"
 import Layout from "./components/Layout.jsx"
 import Details from "./pages/Details"
+import Movies from "./pages/Movies"
+import Series from "./pages/Series"
 
 const App = () => {
 
@@ -23,6 +25,8 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path='series' element={<Series />} />
             <Route path='movies/:id' element={<Details />} />
             <Route path="/:userId" element={<Dashboard />} />
           </Route>
