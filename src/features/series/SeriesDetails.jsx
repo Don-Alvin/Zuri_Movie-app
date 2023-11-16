@@ -26,14 +26,14 @@ const SeriesDetails = () => {
     const formattedReleaseDate = `${month} ${day}, ${year}`;
 
     const stars = series.credits.cast.slice(0, 5)
-    const director = series.credits.crew.filter(crew => crew.job === "Series Director")
-    const writers = series.credits.crew.filter(crew => crew.job === "Original Concept")
+    const director = series.credits.crew.filter(crew => crew.known_for_department === "Directing")
+    const writers = series.credits.crew.filter(crew => crew.department || crew.known_for_department === "Writing")
 
     content = (
       <section key={series.id}>
         <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6' key={series.id}>
           <div className='rounded-lg h-[70vh] p-2 w-full lg:w-[50%] px-4' >
-            <img className='object-cover w-full rounded-lg h-full lg:w-full mx-auto' src={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`} />
+            <img className='object-cover w-full rounded-lg h-full lg:w-full mx-auto' src={`https://image.tmdb.org/t/p/original/${series.poster_path}`} />
           </div>
           <article className='px-4 lg:w-[50%]'>
             <div className='my-4 pr-6 text-gray-700 flex flex-col gap-2' key={series.id}>
@@ -69,7 +69,7 @@ const SeriesDetails = () => {
                 {writers && (
                   <li>
                     Writers: 
-                    {writers.slice(0, 2).map(writer => <span className='text-[#be123c]' key={Math.random()}> {writer.name}, </span>)}
+                    {writers.slice(0, 5).map(writer => <span className='text-[#be123c]' key={Math.random()}> {writer.name}, </span>)}
                   </li>
                 )}
                 

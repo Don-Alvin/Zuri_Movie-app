@@ -4,7 +4,7 @@ import Navbar from '../Navbar'
 
 const Layout = () => {
   return (
-    <main className='flex flex-col'>
+    <main className='flex flex-col min-h-screen'>
         <Navbar />
         <section className='flex-grow'>
             <Outlet />
