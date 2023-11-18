@@ -31,9 +31,11 @@ const Register = () => {
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         displayName: values.displayName,
-        email: values.displayName,
+        email: values.email,
         online: true,
-        photoUrl: ""
+        photoUrl: "",
+        savedMovies: [],
+        savedTv: [],
       });
       toast.success('Registration successfull')
       navigate('/')
@@ -88,7 +90,7 @@ const Register = () => {
           <p className="text-white bg-[#be123c] p-2 font-semibold">Register with google</p>
         </button>
         <span className="text-gray-700 font-semibold py-2">OR</span>
-        <form className='' onSubmit={handleSubmit}>
+        <form className='w-full' onSubmit={handleSubmit}>
               <div className='flex flex-col gap-4 items-center'>
                 <div className='flex flex-col gap-2 w-[100%]'>
                   <label className="text-gray-700 text-md">Name</label>

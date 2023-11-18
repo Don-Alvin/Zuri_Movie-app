@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar'
-import MovieDetails from '../features/movies/MovieDetails'
 import { useParams } from 'react-router-dom'
 
 const Dashboard = () => {

@@ -74,7 +74,7 @@ const Login = () => {
           <p className="text-white bg-[#be123c] p-2 font-semibold">Sign in with google</p>
         </button>
         <span className="text-gray-700 font-semibold">OR</span>
-        <form className='py-1' onSubmit={handleSubmit}>
+        <form className='w-full' onSubmit={handleSubmit}>
           <div className='flex flex-col gap-4'>
               <div className='flex flex-col gap-2 w-[100%]'>
                 <label className="sr-only text-gray-700 text-xl">Email</label>

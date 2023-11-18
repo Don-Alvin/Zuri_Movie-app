@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom'
 import { MdFavorite } from 'react-icons/md'
 import { useState } from 'react'
+import { db } from '../../api/firebase'
+import { arrayUnion, doc, updateDoc } from 'firebase/firestore'
+import useAuth from '../../hooks/useAuth'
+import { toast } from 'react-toastify'
 
-const Card = ({title, date, image, rating, id}) => {
+const Card = ({title, date, image, rating, id, saveMovie}) => {
   const [isFavourite, setIsFavorite] = useState(false)
-
-  const makeFavourite = (movie_id) => {
-    setIsFavorite(!isFavourite)
-  }
+  const { user } = useAuth()
 
   const releaseDate = new Date(date);
   const day = releaseDate.getUTCDate();
   const month = releaseDate.toLocaleString('default', { month: 'long' });
   const year = releaseDate.getUTCFullYear();
   const formattedReleaseDate = `${month} ${day}, ${year}`;
+
+
   return (
     <div
       data-testid="movie-card" 
@@ -21,7 +24,7 @@ const Card = ({title, date, image, rating, id}) => {
     >
       <MdFavorite 
         className={`absolute text-2xl ${isFavourite ? `text-[#be123c]` : `text-gray-200`} right-2 top-2 cursor-pointer`}
-        onClick={() => {makeFavourite(id)}}
+        onClick={() => {saveMovie(id)}}
       />
       <img
         className='w-full object-cover rounded-t'
