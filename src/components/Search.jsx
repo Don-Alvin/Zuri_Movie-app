@@ -4,7 +4,7 @@ import useSearch from '../hooks/useSearch'
 import { PulseLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
 
-const Search = () => {
+const Search = ({clearSearch}) => {
     const { searchWord } = useSearch()
     const {search, loading, isError, error} = useSearchMovies(searchWord)
 
@@ -16,7 +16,11 @@ const Search = () => {
       content = search.map(item => (
         <div key={item.id}>
             <ul>
-                <Link to={`${item.media_type}/${item.id}`} className='flex items-center gap-2'>
+                <Link 
+                  to={`${item.media_type}/${item.id}`} 
+                  className='flex items-center gap-2'
+                  onClick={clearSearch}
+                >
                     <img className='w-[50px] h-[50px] object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path || item.backdrop_path}`} alt='poster' />
                     <p>{item.title || item.name}</p>
                 </Link>

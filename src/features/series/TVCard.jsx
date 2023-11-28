@@ -1,33 +1,31 @@
 import { Link } from 'react-router-dom'
 import { MdFavorite } from 'react-icons/md'
 import { useState } from 'react'
-import useAuth from '../../hooks/useAuth'
-import { arrayRemove, arrayUnion, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import { db } from '../../api/firebase'
-import { toast } from 'react-toastify'
+// import useAuth from '../../hooks/useAuth'
+// import { arrayRemove, arrayUnion, deleteDoc, doc, updateDoc } from 'firebase/firestore'
+// import { db } from '../../api/firebase'
+// import { toast } from 'react-toastify'
 
 const TVCard = ({title, image, rating, id}) => {
   const [isFavourite, setIsFavorite] = useState(false)
-  const { user } = useAuth()
+  // const { user } = useAuth()
 
-  const docRef = doc(db, 'users', user?.uid)
+  // console.log(user.uid);
+
+  // const docRef = doc(db, 'users', user.uid)
 
   const saveTV = async (movie_id) => {
-    if(user?.uid && !isFavourite){
-      setIsFavorite(!isFavourite)
-      await updateDoc(docRef, {
-        savedTv: arrayUnion({
-          id, title, image, rating
-        })
-      })
-    } else if (user?.uid && isFavourite) {
-      setIsFavorite(!isFavourite)
-      await updateDoc(docRef, {
-        savedTv: arrayRemove(movie_id)
-      })
-    }else {
-      toast.error('Please log in to like!')
-    }
+    //  if(user){
+       setIsFavorite(!isFavourite)
+    //    await updateDoc(docRef, {
+    //      savedTv: arrayUnion({
+    //        id, title, image, rating
+    //      })
+    //    })
+
+    //  }else {
+    //    toast.error('Please log in to like!')
+    // }
   }
 
   return (

@@ -14,7 +14,7 @@ const MenuModal = ({handleAuthMenu, handleLogout}) => {
         >
         </div>
         {/* small screen menu */}
-        <div className='lg:hidden bg-white w-[70%] absolute top-0 right-0 z-40 h-screen px-6 py-4 flex flex-col gap-6 text-xl'>
+        <div className='lg:hidden bg-white w-[70%] fixed top-0 right-0 z-40 h-screen px-6 py-4 flex flex-col gap-6 text-xl'>
             <div className='bg-[#be123c] w-fit p-2 text-white rounded-full text-xl h-fit self-end flex justify-center' onClick={handleAuthMenu}>
                 <AiOutlineClose className='bg-[#E11D48] rounded-full shadow-lg' />
             </div>

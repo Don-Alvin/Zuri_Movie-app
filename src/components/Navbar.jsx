@@ -85,7 +85,7 @@ const Navbar = () => {
             </button>
           </div>
           {isSearchOpen && (
-            <Search />
+            <Search clearSearch={clearSearch} />
           )}
         </div>
         <div className='lg:flex gap-6 hidden'>

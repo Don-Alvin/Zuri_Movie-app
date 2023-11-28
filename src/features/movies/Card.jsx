@@ -6,9 +6,27 @@ import { arrayUnion, doc, updateDoc } from 'firebase/firestore'
 import useAuth from '../../hooks/useAuth'
 import { toast } from 'react-toastify'
 
-const Card = ({title, date, image, rating, id, saveMovie}) => {
+const Card = ({title, date, image, rating, id}) => {
   const [isFavourite, setIsFavorite] = useState(false)
-  const { user } = useAuth()
+  // const { user } = useAuth()
+
+  const saveMovie = async (movie_id) => {
+    // if(user?.uid){
+      setIsFavorite(!isFavourite)
+    //   await updateDoc(docRef, {
+    //     savedMovies: arrayUnion({
+    //       id, title, image, rating
+    //     })
+    //   })
+    // } else if (user?.uid) {
+    //   setIsFavorite(false)
+    //   await updateDoc(docRef, {
+    //     savedMovies: arrayRemove(movie_id)
+    //   })
+    // }else {
+    //   toast.error('Please log in to like!')
+    // }
+  }
 
   const releaseDate = new Date(date);
   const day = releaseDate.getUTCDate();
