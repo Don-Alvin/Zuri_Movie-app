@@ -3,6 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { PulseLoader } from 'react-spinners'
 import { useGetMovie } from '../../hooks/useMovies'
 import MetaData from '../../components/Meta/MetaData'
+import Card from './Card'
 
 const MovieDetails = () => {
   const params  = useParams()
@@ -74,6 +75,20 @@ const MovieDetails = () => {
             </div>
           </article>
         </section>
+        <article className='px-4'>
+          <h4 className='text-gray-700 font-semobold text-xl mb-4'>Similar Movies</h4>
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4'>
+            {movie.similar.results.map(item => (
+              <Card
+                title={item.title}
+                date={item.release_date}
+                image={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                rating={item.vote_average}
+                id={item.id}
+              />
+            ))}
+          </div>
+        </article>
       </section>
     )
   }

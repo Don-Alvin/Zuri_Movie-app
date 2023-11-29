@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useGetSeries } from '../../hooks/useSeries'
 import { PulseLoader } from 'react-spinners'
 import MetaData from '../../components/Meta/MetaData'
+import TVCard from './TVCard'
 
 const SeriesDetails = () => {
   const { id } = useParams()
@@ -81,6 +82,20 @@ const SeriesDetails = () => {
             </div>
           </article>
         </section>
+        <article className='px-4'>
+          <h4 className='text-gray-700 font-semobold text-xl mb-4'>Similar TV Shows</h4>
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4'>
+            {series.similar.results.map(item => (
+              <TVCard
+                title={item.title}
+                date={item.release_date}
+                image={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                rating={item.vote_average}
+                id={item.id}
+              />
+            ))}
+          </div>
+        </article>
       </section>
     )
   }

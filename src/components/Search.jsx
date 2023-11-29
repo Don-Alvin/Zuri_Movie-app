@@ -21,7 +21,7 @@ const Search = ({clearSearch}) => {
                   className='flex items-center gap-2'
                   onClick={clearSearch}
                 >
-                    <img className='w-[50px] h-[50px] object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path || item.backdrop_path}`} alt='poster' />
+                    <img className='w-[50px] h-[50px] object-cover' src={`https://image.tmdb.org/t/p/original/${item.poster_path || item.backdrop_path || item.profile_path}`} alt='poster' />
                     <p>{item.title || item.name}</p>
                 </Link>
             </ul>

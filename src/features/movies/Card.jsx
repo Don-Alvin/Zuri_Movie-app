@@ -38,7 +38,7 @@ const Card = ({title, date, image, rating, id}) => {
   return (
     <div
       data-testid="movie-card" 
-      className='relative grid border w-[90%] md:w-[240px] lg:h-[460px] rounded'
+      className='relative grid border w-[90%] md:w-[240px] lg:h-[460px] rounded overflow-hidden'
     >
       <MdFavorite 
         className={`absolute text-2xl ${isFavourite ? `text-[#be123c]` : `text-gray-200`} right-2 top-2 cursor-pointer`}
@@ -59,7 +59,7 @@ const Card = ({title, date, image, rating, id}) => {
             src='/images/imdb.png'
             alt='imdb logo'
           />
-          <span className='text-lg text-[#111827]'>{rating}/10</span>
+          <span className='text-lg text-[#111827]'>{rating.toFixed(1)}/10</span>
         </div>
       </div>
     </div>
