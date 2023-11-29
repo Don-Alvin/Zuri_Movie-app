@@ -5,23 +5,26 @@ import { PulseLoader } from 'react-spinners'
 import Card from '../features/movies/Card'
 
 const Movies = () => {
-  const {movies, isError, error, isLoading } = useAllMovies()
+  const { isFetching, error, movies, hasNextPage, isFetchingNextPage, status, fetchNextPage } = useAllMovies()
   console.log(movies);
 
   let content;
 
-  if(isLoading) content = <PulseLoader color='#be123c' />
-  if(isError) content = <p>Oooop! We encountered an error: {error}</p>
+  if(status === 'pending') content = <PulseLoader color='#be123c' />
+  if(status === 'error') content = <p>Oooop! We encountered an error: {error}</p>
   if(movies) {
-    content = movies.map(movie => (
-      <Card 
-        image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        title={movie.title}
-        date={movie.release_date}
-        rating={movie.vote_average}
-        id={movie.id}
+    content = movies.pages.map((items, i) => (
+      items.map(movie => (
+        <Card 
+          image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          title={movie.title}
+          date={movie.release_date}
+          rating={movie.vote_average}
+          id={movie.id}
       />
-    ))
+      )) 
+      )
+    )
   }
 
   return (
@@ -33,7 +36,19 @@ const Movies = () => {
       <article className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4'>
         {content}
       </article>
-      <button className='text-white bg-[#E11D48] p-2'>Load more</button>
+      <button 
+        className='text-white bg-[#E11D48] p-2'
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage
+          ? 'Loading more..'
+          : hasNextPage 
+          ? 'Load more'
+          :'Nothing more to load' 
+        }
+      </button>
+      <div>{isFetching && !isFetchingNextPage ? <PulseLoader color='#be123c' /> : null}</div>
     </section>
   )
 }

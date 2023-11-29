@@ -1,20 +1,31 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getAllMovies, getMovie, getTopMovies, getTrendingMovies, searchMovies } from "../api/apiMovies";
 
 
 // Get all movies
 
 export const useAllMovies = () => {
-	const { isInitialLoading: isLoading, isError, error, data:movies } = useQuery({
+	const { 
+		isFetching, 
+		isError,
+		error, 
+		fetchNextPage, 
+		hasNextPage, 
+		isFetchingNextPage, 
+		status, 
+		data:movies 
+	} = useInfiniteQuery({
 		queryKey: ['movies'],
-		queryFn: getAllMovies,
+		queryFn:  getAllMovies,
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, pages) => lastPage.length ? pages.length + 1 : undefined
 	})
 
-	return { isLoading, error, isError, movies}
+	return { isFetching, error, isError, movies, hasNextPage, isFetchingNextPage, status, fetchNextPage}
 }
 
 export const useTrendingMovies = () => {
-    const {isInitialLoading: loading, error, isError, data: trendingMovies} = useQuery({queryKey: ["trendingMovies"], queryFn: getTrendingMovies})
+    const { isInitialLoading: loading, error, isError, data: trendingMovies} = useQuery({queryKey: ["trendingMovies"], queryFn: getTrendingMovies})
     return {loading, error, isError, trendingMovies}
 }
 

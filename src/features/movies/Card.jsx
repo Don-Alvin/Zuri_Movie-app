@@ -59,7 +59,7 @@ const Card = ({title, date, image, rating, id}) => {
             src='/images/imdb.png'
             alt='imdb logo'
           />
-          <span className='text-lg text-[#111827]'>{rating.toFixed(1)}/10</span>
+          <span className='text-lg text-[#111827]'>{rating}/10</span>
         </div>
       </div>
     </div>
