@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { PulseLoader } from 'react-spinners'
 import { useGetMovie } from '../../hooks/useMovies'
+import MetaData from '../../components/Meta/MetaData'
 
 const MovieDetails = () => {
   const params  = useParams()
@@ -32,6 +33,7 @@ const MovieDetails = () => {
 
     content = (
       <section key={movie.id}>
+        <MetaData title={movie.title} />
         <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6' key={movie.id}>
           <div className='rounded-lg h-[60vh] p-2 w-full lg:w-[50%] px-4' >
             <iframe className='w-full rounded-lg h-full lg:w-full mx-auto' src={`https://www.youtube.com/embed/${trailer[0].key}`} ></iframe>

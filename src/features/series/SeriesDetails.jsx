@@ -2,12 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetSeries } from '../../hooks/useSeries'
 import { PulseLoader } from 'react-spinners'
+import MetaData from '../../components/Meta/MetaData'
 
 const SeriesDetails = () => {
   const { id } = useParams()
   const {loading, isError, error, series} = useGetSeries(id)
-
-  console.log(series);
 
   let content;
 
@@ -31,6 +30,7 @@ const SeriesDetails = () => {
 
     content = (
       <section key={series.id}>
+        <MetaData title={series.name} />
         <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6' key={series.id}>
           <div className='rounded-lg h-[70vh] p-2 w-full lg:w-[50%] px-4' >
             <img className='object-cover w-full rounded-lg h-full' src={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`} />
