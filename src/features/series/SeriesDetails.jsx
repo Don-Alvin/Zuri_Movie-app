@@ -33,7 +33,7 @@ const SeriesDetails = () => {
       <section key={series.id}>
         <section className='w-full flex flex-col lg:flex-row justify-between gap-4 lg:py-6' key={series.id}>
           <div className='rounded-lg h-[70vh] p-2 w-full lg:w-[50%] px-4' >
-            <img className='object-cover object-center w-full rounded-lg h-full' src={`https://image.tmdb.org/t/p/original/${series.poster_path}`} />
+            <img className='object-cover w-full rounded-lg h-full' src={`https://image.tmdb.org/t/p/original/${series.backdrop_path}`} />
           </div>
           <article className='px-4 lg:w-[50%]'>
             <div className='my-4 pr-6 text-gray-700 flex flex-col gap-2' key={series.id}>

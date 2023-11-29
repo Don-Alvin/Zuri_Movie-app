@@ -5,24 +5,25 @@ import { PulseLoader } from 'react-spinners'
 import TVCard from '../features/series/TVCard' 
 
 const Series = () => {
-  const { allSeries:movies, isError, error, isLoading } = useAllSeries()
+  const { fetchNextPage, hasNextPage,isFetching, isFetchingNextPage,status, error, allSeries:movies } = useAllSeries()
  
   let content;
 
-  if(isLoading) content = <PulseLoader color='#be123c' />
-  if(isError) content = <p>Oooop! We encountered an error: {error}</p>
+  if(status === 'pending') content = <PulseLoader color='#be123c' />
+  if(status === 'error') content = <p>Oooop! We encountered an error: {error}</p>
   if(movies) {
-    content = movies.map(movie => (
-      <div key={movie.id}>
-        <TVCard 
-          image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          title={movie.name}
-          date={movie.first_air_date}
-          rating={movie.vote_average}
-          id={movie.id}
-        />
-      </div>
-      
+    content = movies.pages.map(items => (
+        items.map(movie => (
+          <div key={movie.id}>
+            <TVCard 
+              image={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              title={movie.name}
+              date={movie.first_air_date}
+              rating={movie.vote_average}
+              id={movie.id}
+            />
+          </div>
+        ))
     ))
   }
 
@@ -35,7 +36,19 @@ const Series = () => {
       <article className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4'>
         {content}
       </article>
-      <button className='text-white bg-[#E11D48] p-2'>Load more</button>
+      <button 
+        className='text-white bg-[#E11D48] p-2'
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage
+          ? 'Loading more..'
+          : hasNextPage 
+          ? 'Load more'
+          :'Nothing more to load' 
+        }
+      </button>
+      <div>{isFetching && !isFetchingNextPage ? <PulseLoader color='#be123c' /> : null}</div>
     </section>
   )
 }

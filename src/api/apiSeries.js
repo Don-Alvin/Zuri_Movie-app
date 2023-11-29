@@ -10,9 +10,9 @@ const options = {
 };
 
 // Get all movies
-export const getAllSeries =  async () => {
+export const getAllSeries =  async ({pageParam = 1}) => {
 	const response = await fetch(
-		'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc', 
+		`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${pageParam}&sort_by=vote_count.desc`, 
 		options
 	)
 	const data = await response.json()

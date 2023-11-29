@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getAllSeries, getSeries, getTopSeries } from "../api/apiSeries";
 
 export const useTopSeries = () => {
@@ -17,12 +17,22 @@ export const useTopSeries = () => {
 
 // Get all series
 export const useAllSeries = () => {
-	const {isInitialLoading: isLoading, isError, error, data:allSeries} = useQuery({
+	const {
+		fetchNextPage, 
+		hasNextPage, 
+		isFetching,
+		isFetchingNextPage, 
+		status, 
+		error, 
+		data:allSeries
+	} = useInfiniteQuery({
 		queryKey:['allSeries'],
-		queryFn: getAllSeries
+		queryFn: getAllSeries,
+		initialPageParam: 1,
+		getNextPageParam: (lastPage, pages) => lastPage.length ? pages.length + 1 : undefined
 	})
 
-	return { isLoading, isError, error, allSeries}
+	return { fetchNextPage, hasNextPage,isFetching, isFetchingNextPage,status, error, allSeries}
 }
 
 // Get a series
