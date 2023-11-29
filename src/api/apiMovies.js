@@ -58,3 +58,12 @@ export const searchMovies = async (word) => {
 	const data = await response.json();
 	return data.results;
 };
+
+// Get Genres
+export const getGenresMovies = async() => {
+	const response = await fetch(
+		'https://api.themoviedb.org/3/genre/movie/list', options
+	)
+		const data = await response.json()
+		return data.genres
+}

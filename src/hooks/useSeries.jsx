@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { getAllSeries, getSeries, getTopSeries } from "../api/apiSeries";
+import { getAllSeries, getGenresSeries, getSeries, getTopSeries } from "../api/apiSeries";
 
 export const useTopSeries = () => {
     const {
@@ -43,5 +43,14 @@ export const useGetSeries = (seriesId) => {
 	})
 
 	return {loading, isError, error, series}
+}
+
+export const useGenresSeries = () => {
+	const { isInitialLoading: loading, isError, error, data: genres } =useQuery({
+		queryKey: ['genres'],
+		queryFn: getGenresSeries
+	})
+
+	return {genres, error, isError}
 }
 

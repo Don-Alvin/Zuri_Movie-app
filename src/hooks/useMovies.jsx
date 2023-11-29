@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { getAllMovies, getMovie, getTopMovies, getTrendingMovies, searchMovies } from "../api/apiMovies";
+import { getAllMovies, getGenresMovies, getMovie, getTopMovies, getTrendingMovies, searchMovies } from "../api/apiMovies";
 
 
 // Get all movies
@@ -58,8 +58,15 @@ export const useSearchMovies = (searchWord) => {
 		queryKey: ['search', searchWord],
 		queryFn: () => searchMovies(searchWord)
 	})
-
 	return { loading, isError, error, search}
+}
+
+export const useGenresMovies = () => {
+	const { isInitialLoading: loading, isError, error, data: genres } =useQuery({
+		queryKey: ['genres'],
+		queryFn: getGenresMovies
+	})
+	return {genres, error, isError}
 }
 
 

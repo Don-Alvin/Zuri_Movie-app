@@ -32,9 +32,6 @@ const Series = () => {
       <MetaData title={'All TV Shows'} />
       <header className='my-2 flex font-semibold justify-between items-center p-4'>
         <h2 className='text-gray-700 font-semibold text-xl'>TV Shows</h2>
-        <select className='p-2 outline-none bg-[#bc123e] text-white'>
-          <option value="">Genres</option>
-        </select>
       </header>
       <article className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 my-4'>
         {content}

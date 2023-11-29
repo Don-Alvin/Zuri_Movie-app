@@ -37,3 +37,12 @@ export const getSeries = async (id) => {
 	const data = await response.json();
 	return data;
 };
+
+// Get Genres
+export const getGenresSeries = async() => {
+	const response = await fetch(
+		'https://api.themoviedb.org/3/genre/tv/list', options
+	)
+		const data = await response.json()
+		return data.genres
+}
