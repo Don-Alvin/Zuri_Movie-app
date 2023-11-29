@@ -34,7 +34,7 @@ const MenuModal = ({handleAuthMenu, handleLogout}) => {
                     <ul className='flex flex-col gap-3'>
                         <li className='flex flex-col gap-3'>
                           <Link onClick={handleAuthMenu} to='/movies'>Movies</Link>
-                          <Link onClick={handleAuthMenu} to='/series'>Series</Link>  
+                          <Link onClick={handleAuthMenu} to='/tv'>Series</Link>  
                         </li>
                         <li className='flex flex-col gap-3'>
                           <Link onClick={handleAuthMenu} to='/login'>Log in</Link>

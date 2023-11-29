@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import MetaData from '../components/Meta/MetaData'
-import { useAllMovies, useGenresMovies } from '../hooks/useMovies'
+import { useAllMovies } from '../hooks/useMovies'
 import { PulseLoader } from 'react-spinners'
 import Card from '../features/movies/Card'
 
 const Movies = () => {
   const { isFetching, error, movies, hasNextPage, isFetchingNextPage, status, fetchNextPage } = useAllMovies()
-  const { genres } = useGenresMovies()
+
 
   let content;
 
@@ -24,7 +24,6 @@ const Movies = () => {
             id={movie.id}
           />
         </div>
-        
       )) 
       )
     )
